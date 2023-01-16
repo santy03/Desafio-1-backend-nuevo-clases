@@ -3,17 +3,43 @@
         this.products = []
     }
 
-    addProduct(title, description, price, thumbnail, code, stock){
-        const product = {
-            title,
-            description,
-            price, 
-            thumbnail, 
-            code, 
-            stock,
-        }
-        this.products.push(product)
-    }
+    addProduct = function (title, description, price, thumbnail, code, stock,) {
+
+        if (!title || !description || !price || !thumbnail || !code || !stock) {
+  
+            console.log('Falta completar datos del producto');
+  
+        } else {
+  
+            const nuevoProducto = this.#evaluarSiExisteProducto(code);
+  
+            if (nuevoProducto) {
+  
+                console.log('error, producto ya existente, código repetido');
+  
+            } else {
+  
+                this.#idAutoIncremental ++;
+  
+                this.products.push({
+  
+                    title,
+  
+                    description,
+  
+                    price,
+  
+                    thumbnail,
+  
+                    code,
+  
+                    stock,
+  
+                    id: this.#idAutoIncremental,
+  
+                })
+  
+            }
 
     getProducts(){
         return this.products
