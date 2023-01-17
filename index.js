@@ -40,13 +40,20 @@
                 })
   
             }
+        }
+    }
 
     getProducts(){
         return this.products
     }
 
-    getProductsById(){
-        return
+    getProductById(productoId) {
+        const productoEncontradoPorId = this.products.find(el => productoId == el.id)
+        if (productoEncontradoPorId) {
+            console.log(productoEncontradoPorId);
+        } else {
+            console.log('not found');
+        }
     }
 }
 
